@@ -19,12 +19,19 @@ app.use('/cdn', cdn_1.cdnRouter);
 app.get('/health', (_req, res) => {
     res.json({ ok: true, service: 'nexus-brain-backend' });
 });
-// Ejemplo
+// Ejemplo (POST)
 app.post('/api/ejemplo', (req, res) => {
     res.json({
         ok: true,
         recibido: req.body,
-        mensaje: "Ruta funcionando correctamente"
+        mensaje: "Ruta POST funcionando correctamente"
+    });
+});
+// Ejemplo (GET)
+app.get('/api/ejemplo', (_req, res) => {
+    res.json({
+        ok: true,
+        mensaje: "Hola Alma, GET funcionando correctamente."
     });
 });
 // ----------------------
@@ -34,7 +41,7 @@ app.post('/api/verify', (req, res) => {
     const did = req.header('X-DID');
     const signature = req.header('X-Signature');
     if (!did || !signature) {
-        return res.status(400).json({ ok: false, error: "Faltan encabezados DID o Signature" });
+        return res.status(400).json({ ok: false, error: "Faltan cabeceras X-DID o X-Signature" });
     }
     const publicKey = process.env.PUBLIC_KEY;
     if (!publicKey) {
