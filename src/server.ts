@@ -64,6 +64,10 @@ app.post('/api/verify', (req, res) => {
   });
 });
 
+app.get('/', (_req, res) => {
+  res.send('Servicio activo: Cerebro-nexo-bankend');
+});
+
 // Iniciar servidor
 const port = process.env.PORT || 4000;
 app.listen(port, () => {
