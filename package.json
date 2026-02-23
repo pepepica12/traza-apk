@@ -1,7 +1,8 @@
 {
   "name": "nexus-brain-backend",
   "version": "1.0.0",
-  "description": "Backend orquestador del Nexus Brain multirepo",
+  "description": "Backend orquestador del Nexus",
+  "type": "module",
   "main": "dist/server.js",
   "scripts": {
     "dev": "ts-node src/server.ts",
