@@ -1,4 +1,4 @@
-	mport express from "express";
+import express from "express";
 import app from "./index.js";       // tu app modular
 import { leerRSS } from "./rss.js"; // tu función real de RSS
 import { Pool } from "pg";          // conexión a PostgreSQL
