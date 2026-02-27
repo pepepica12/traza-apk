@@ -1,33 +1,31 @@
 import express from "express";
-import app from "./index.js";
-import { leerRSS } from "./rss.js";
 import { Pool } from "pg";
+import cors from "cors";
+import { leerRSS } from "./rss.js";
 
 const server = express();
+server.use(cors());
 server.use(express.json());
-
-// Montar la app original
-server.use(app);
 
 // Conexión a PostgreSQL
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
+  connectionString: process.env.DATABASE_URL || "postgresql://new_query_user:KGhVrKzif7mJVwQFZzVmEJvi2lMndmJb@dpg-d6eapn94tr6s73bai0ag-a.oregon-postgres.render.com/new_query",
   ssl: { rejectUnauthorized: false }
 });
 
-// Rutas API funcionales
-server.get("/api/posts", async (req, res) => {
+// Endpoints API
+server.get("/api/users", async (req, res) => {
   try {
-    const result = await pool.query("SELECT * FROM posts");
+    const result = await pool.query("SELECT * FROM users");
     res.json(result.rows);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
 
-server.get("/api/users", async (req, res) => {
+server.get("/api/posts", async (req, res) => {
   try {
-    const result = await pool.query("SELECT * FROM users");
+    const result = await pool.query("SELECT * FROM posts");
     res.json(result.rows);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -58,4 +56,3 @@ server.listen(PORT, () => {
 });
 
 export default server;
-// Forzar redeploy Fri Feb 27 02:11:04 CST 2026
