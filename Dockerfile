@@ -15,7 +15,8 @@ COPY README.md /app/README.md
 ENV APK_DIR=/app/data/apk_descompilado
 ENV OUT_DIR=/app/web/reports
 
-RUN mkdir -p /app/web/reports && chmod +x /app/scripts/*.sh /app/entrypoint.sh
+RUN mkdir -p /app/data/apk_descompilado /app/web/reports \
+    && chmod +x /app/scripts/*.sh /app/entrypoint.sh
 
 EXPOSE 8080
 CMD ["/app/entrypoint.sh"]
