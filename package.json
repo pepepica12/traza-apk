@@ -1,0 +1,20 @@
+{
+  "name": "telemetr-a-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "engines": {
+    "node": "20.x"
+  },
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^1.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.22.1",
+    "fast-xml-parser": "^5.3.4",
+    "node-fetch": "^3.3.2",
+    "pg": "^8.11.1"
+  }
+}
