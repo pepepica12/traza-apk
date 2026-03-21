@@ -7,8 +7,7 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 COPY scripts/ /app/scripts/
-COPY data/ /app/data/
-COPY web/ /app/web/
+RUN mkdir -p /app/data /app/web
 COPY entrypoint.sh /app/entrypoint.sh
 COPY README.md /app/README.md
 
